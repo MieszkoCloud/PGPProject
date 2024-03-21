@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:PGPProject.ViewModels"
+             x:Class="PGPProject.Views.CreateKeyPage"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <viewmodel:CreateKeyViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="10">
+        <Frame BackgroundColor="#FFe6e6e6" CornerRadius="5" Padding="5">
+            <Entry x:Name="keyname"
+                   Placeholder="Key name" 
+                   PlaceholderColor="DarkGray"
+                   TextColor="Black"
+                   FontSize="18"
+                   TextChanged="OnTextChanged"/>
+        </Frame>
+
+        <Label Text="{Binding ErrorMessage}" 
+            TextColor="Red" 
+            FontSize="Small" 
+            Margin="0,5,0,0"
+            HeightRequest="30"
+            IsVisible="{Binding IsErrorVisible}" />
+
+        <Button Text="Save" Clicked="OnSaveClicked" x:Name="Save" IsEnabled="{Binding IsButtonEnabled}" />
+    </StackLayout>
+
+</ContentPage>
+    

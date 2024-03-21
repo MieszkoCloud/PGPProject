@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodel="clr-namespace:PGPProject.ViewModels"
+             x:Class="PGPProject.Views.HomePage"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <viewmodel:HomeViewModel />
+    </ContentPage.BindingContext>
+
+    <AbsoluteLayout Padding="10" HorizontalOptions="FillAndExpand">
+        <StackLayout Orientation="Vertical" Spacing="0" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            <Label Text="My Keys" FontSize="Small" HorizontalOptions="FillAndExpand" TextColor="Black" />
+            <BoxView HeightRequest="1" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand" />
+
+            <ListView ItemsSource="{Binding KeyNames}" RowHeight="70">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="0,10,0,0">
+                                <!-- First Row (Two Columns) -->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="30" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- First Column (Divided Vertically) -->
+                                <Grid Grid.Row="0" Padding="10,0,10,0" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Content for the First Column - First Row -->
+                                    <Label Grid.Row="0" Text="{Binding [0]}" TextColor="Black" FontSize="20" HeightRequest="20" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+
+                                    <!-- Content for the First Column - Second Row -->
+                                    <Label Grid.Row="1" Text="{Binding [1], StringFormat='Created: {0}'}" TextColor="Black" HeightRequest="20" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+
+                                </Grid>
+
+
+                                <!-- First Column - Second Row -->
+                                <Button  Grid.Row="0" Grid.Column="1"
+                                         VerticalOptions="Center"
+                                         CommandParameter="{Binding [0]}"
+                                         Clicked="DeleteButton_Clicked"
+                                         HeightRequest="30"
+                                         WidthRequest="30"
+                                         Background="Transparent">
+                                    <Button.Image>
+                                        <FileImageSource File="trash" />
+                                    </Button.Image>
+                                </Button>
+
+                                <!-- Second Row (Single Column, 100% Width) -->
+                                <BoxView Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="1" Color="#bbb" Margin="0,5,0,0" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        
+        <Button Clicked="AddButton_Clicked" 
+                CornerRadius="35" 
+                BackgroundColor="{StaticResource Primary}"
+                HeightRequest="60"
+                WidthRequest="60"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Margin="0,0,25,25"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="1, 1, AutoSize, AutoSize" >
+
+            <Button.Image>
+                <FileImageSource File="add" />
+            </Button.Image>
+        </Button>
+    </AbsoluteLayout>
+</ContentPage>

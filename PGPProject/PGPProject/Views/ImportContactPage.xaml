@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PGPProject.Views.ImportContactPage"
+             xmlns:vm="clr-namespace:PGPProject.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:ImportContactViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="10">
+        
+        <!-- Contact Name -->
+        <StackLayout Margin="0,0,0,5">
+            <Label Text="Contact Name" FontSize="Small" HorizontalOptions="FillAndExpand" TextColor="Black" />
+            <Frame BackgroundColor="#FFe6e6e6" CornerRadius="3" Padding="5" HorizontalOptions="FillAndExpand" >
+                <Entry x:Name="ContactName" 
+                       TextColor="Black" 
+                       VerticalOptions="FillAndExpand" 
+                       Placeholder="Type..." 
+                       PlaceholderColor="DarkGray" 
+                       FontSize="18"
+                       TextChanged="OnContactKeyNameTextChanged" />
+            </Frame>
+
+            <Label Text="{Binding ErrorMessage}" 
+                    TextColor="Red" 
+                    FontSize="Small" 
+                    Margin="0,5,0,0"
+                    HeightRequest="30"
+                    IsVisible="{Binding IsErrorVisible}" />
+        </StackLayout>
+
+        <!-- Label for filename with X button -->
+        <StackLayout Orientation="Vertical" Margin="0,0,0,20">
+            <Label Text="Contact Public Key" FontSize="Small" HorizontalOptions="FillAndExpand" TextColor="Black" VerticalOptions="FillAndExpand"/>
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="ContactKeyButton" Text="Select File" HeightRequest="45" WidthRequest="75" Padding="1" Clicked="OnContactKeyFileNameClick" />
+                <Label x:Name="ContactKeyFileNameLabel" TextColor="Black" BackgroundColor="#FFfafafa" Padding="5,0" HeightRequest="30" VerticalTextAlignment="Center" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" />
+            </StackLayout>
+        </StackLayout>
+
+        <Button Text="Save" Clicked="OnContactKeySaveClicked" x:Name="ContactKeySave" IsEnabled="{Binding IsButtonEnabled}" />
+    </StackLayout>
+    
+</ContentPage>

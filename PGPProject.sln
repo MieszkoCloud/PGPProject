@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGPProject.Android", "PGPProject\PGPProject.Android\PGPProject.Android.csproj", "{FB523827-3EB6-419B-A83A-5ADF655F5973}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGPProject", "PGPProject\PGPProject\PGPProject.csproj", "{19A853EE-08D8-4FED-8C9E-913FB640E73F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB523827-3EB6-419B-A83A-5ADF655F5973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB523827-3EB6-419B-A83A-5ADF655F5973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB523827-3EB6-419B-A83A-5ADF655F5973}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FB523827-3EB6-419B-A83A-5ADF655F5973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB523827-3EB6-419B-A83A-5ADF655F5973}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB523827-3EB6-419B-A83A-5ADF655F5973}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{19A853EE-08D8-4FED-8C9E-913FB640E73F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19A853EE-08D8-4FED-8C9E-913FB640E73F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19A853EE-08D8-4FED-8C9E-913FB640E73F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{19A853EE-08D8-4FED-8C9E-913FB640E73F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19A853EE-08D8-4FED-8C9E-913FB640E73F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19A853EE-08D8-4FED-8C9E-913FB640E73F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {953EA1DD-9126-4C2C-A744-433427FB31C5}
+	EndGlobalSection
+EndGlobal

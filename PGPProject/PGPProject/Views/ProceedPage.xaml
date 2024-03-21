@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PGPProject.Views.ProceedPage"
+             xmlns:vm="clr-namespace:PGPProject.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:ProceedViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="10">
+        <!-- Top Row with Encrypt and Decrypt buttons -->
+        <StackLayout Orientation="Horizontal"  Margin="0,5,0,20">
+            <Button x:Name="EncryptButton" Text="Encrypt" Clicked="OnMethodChange" HorizontalOptions="FillAndExpand" />
+            <Button x:Name="DecryptButton" Text="Decrypt" Clicked="OnMethodChange" HorizontalOptions="FillAndExpand" />
+        </StackLayout>
+
+        <!-- Textarea -->
+        <StackLayout Margin="0,0,0,5">
+            <Label Text="Type text" FontSize="Small" HorizontalOptions="FillAndExpand" TextColor="Black" />
+            <Frame BackgroundColor="#FFe6e6e6" CornerRadius="3" Padding="5" HorizontalOptions="FillAndExpand" >
+                <Editor x:Name="Textarea" TextColor="Black" HeightRequest="80" VerticalOptions="StartAndExpand"/>
+            </Frame>
+        </StackLayout>
+
+        <!-- Row with Paste and Select File buttons -->
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,0,0,10">
+            <Button x:Name="PasteButton" Text="Paste" Clicked="OnPasteClick" HorizontalOptions="FillAndExpand" />
+            <Button x:Name="SelectFileButton" Text="Select File" Clicked="OnSelectInputFileClick" HorizontalOptions="FillAndExpand" />
+        </StackLayout>
+
+        <!-- Label for filename with X button -->
+        <StackLayout Orientation="Horizontal" Margin="0,0,0,20">
+            <Button x:Name="ClearFilenameButton" Text="Clear" HeightRequest="30" WidthRequest="60" Padding="1" IsVisible="True" Clicked="OnClearFilenameClick" />
+            <Label x:Name="FilenameLabel" TextColor="Black" BackgroundColor="#FFfafafa" Padding="5,0" HeightRequest="30" VerticalTextAlignment="Center" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" />
+        </StackLayout>
+
+        <!-- Dropdown list -->
+        <StackLayout x:Name="RecipientSection" Margin="0,0,0,10">
+            <Label Text="Select recipient (required)" FontSize="Small" x:Name="RecipientLabel" HorizontalOptions="FillAndExpand" TextColor="Black" />
+            <Frame BackgroundColor="#FFe6e6e6" CornerRadius="3" Padding="0" >
+                <Picker x:Name="RecipientDropdownList" Title="Select Recipient" TextColor="Black" ItemsSource="{Binding Recipients}" />
+            </Frame>
+        </StackLayout>
+
+        <!-- Dropdown list for selecting key to sign -->
+        <StackLayout Margin="0,0,0,10">
+            <Label Text="Select private key (required)" x:Name="MyKeyLabel" FontSize="Small" HorizontalOptions="FillAndExpand" TextColor="Black" />
+            <Frame x:Name="MyKeyDropdownListContainer" BackgroundColor="#FFe6e6e6" CornerRadius="3" Padding="0" >
+                <Picker x:Name="MyKeyDropdownList" Title="Select Key" TextColor="Black" ItemsSource="{Binding MyKeys}" />
+            </Frame>
+        </StackLayout>
+
+        <!-- Symmetric key input -->
+        <StackLayout x:Name="SymmetricKeySection">
+            <Label Text="Select key to decrypt (required)" FontSize="Small" x:Name="SymmKeyLabel" HorizontalOptions="FillAndExpand" TextColor="Black" />
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="SelectSymmetricKeyButton" Text="Select key" Padding="1" HeightRequest="30" WidthRequest="90" Clicked="OnSelectInputSymmetricKeyClick" />
+                <Label x:Name="SymmKeyFilenameLabel" TextColor="Black" BackgroundColor="#FFfafafa" FontSize="18" Padding="5,0" HeightRequest="30" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" />
+            </StackLayout>
+        </StackLayout>
+
+        <!-- Checkbox for Sign -->
+        <StackLayout Orientation="Horizontal" 
+                     HorizontalOptions="FillAndExpand" 
+                     IsVisible="True" 
+                     x:Name="SignCheckboxContainer">
+            <CheckBox x:Name="SignCheckbox" />
+            <Label Text="Sign my message" VerticalOptions="Center" FontSize="20" TextColor="Black"/>
+        </StackLayout>
+
+        <!-- Proceed Button -->
+        <Button x:Name="ProceedButton" Text="" HorizontalOptions="FillAndExpand" FontSize="Large" Margin="0,25,0,0" Clicked="OnProceedClick" />
+    </StackLayout>
+</ContentPage>
